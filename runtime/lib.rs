@@ -33,4 +33,7 @@ pub mod web_worker;
 pub mod worker;
 
 mod worker_bootstrap;
+pub mod types;
+pub mod common;
+
 pub use worker_bootstrap::BootstrapOptions;
