@@ -69,7 +69,7 @@ async fn main() -> Result<(), AnyError> {
   };
 
   let js_path =
-    Path::new(env!("CARGO_MANIFEST_DIR")).join("examples/hello_runtime.js");
+      Path::new(env!("CARGO_MANIFEST_DIR")).join("examples/hello_runtime.js");
   let main_module = deno_core::resolve_path(&js_path.to_string_lossy())?;
   let permissions = PermissionsContainer::allow_all();
 
@@ -78,7 +78,7 @@ async fn main() -> Result<(), AnyError> {
     permissions,
     options,
   );
-  worker.execute_main_module(&main_module).await?;
-  worker.run_event_loop(false).await?;
+
+  let snapshot = worker.js_runtime.snapshot();
   Ok(())
 }
