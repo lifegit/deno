@@ -85,14 +85,11 @@ async fn main() -> Result<(), AnyError> {
   let mut interval = time::interval(time::Duration::from_secs(2));
   loop {
     // parameters
-    let mut entry = Entry::default();
     let val = TypedValue::Number(num);
-    entry.set_data_type(val.get_type());
-    entry.value = val.get_data();
 
     // run
     let result = func
-      .call_fn(&TypedValue::from(&entry))
+        .call_fn(&val)
       .unwrap_or(TypedValue::Invalid);
 
     // result
